@@ -4,8 +4,11 @@
 This project is about Python - Variable Annotations
 
 ## Requirements
+```
 * Ubuntu 18.04 LTS
 * python3 3.7.5
+
+```
 
 ## Learning Objectives
 * Type annotations in Python 3
