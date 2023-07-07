@@ -1,0 +1,2 @@
+pycodestyle==2.5.0
+pydocstyle==3.0.0
