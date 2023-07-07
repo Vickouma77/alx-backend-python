@@ -10,4 +10,4 @@ def sum_list(input_list: float) -> float:
     Returns:
         sum of input_list
     """
-    return sum(input_list)
+    return float(sum(input_list))
