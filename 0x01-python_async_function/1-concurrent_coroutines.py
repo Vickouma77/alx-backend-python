@@ -9,7 +9,7 @@ from typing import List
 wait_random = __import__('0-basic_async_syntax').wait_random
 
 
-async def wait_random(n: int,  max_delay: int = 10) -> float:
+async def wait_random(max_delay: int = 10) -> float:
     """[summary]
 
     Args:
