@@ -5,18 +5,16 @@ Tasks 5
 
 import asyncio
 import random
+from typing import List
 
 
-async def task_wait_n(max_delay: int, n: int) -> float:
-    """[summary]
+task_wait_random = __import__('3-tasks').task_wait_random
 
-    Args:
-        max_delay (int): [description]
-        n (int): [description]
 
-    Returns:
-        List[float]: [description]
+async def task_wait_n(n: int, max_delay: int) -> List[float]:
+    """Executes task_wait_random n times.
     """
-    random_float = random.uniform(0, max_delay)
-    await asyncio.sleep(random_float)
-    return random_float
+    wait_times = await asyncio.gather(
+        *tuple(map(lambda _: task_wait_random(max_delay), range(n)))
+    )
+    return sorted(wait_times)
