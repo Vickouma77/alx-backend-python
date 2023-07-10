@@ -2,20 +2,21 @@
 """
 Tasks 5
 """
+
 import asyncio
 import random
-from typing import List
-
-wait_random = __import__('0-basic_async_syntax').wait_random
 
 
-def task_wait_random(max_delay: int) -> asyncio.Task:
+async def task_wait_n(max_delay: int, n: int) -> float:
     """[summary]
 
     Args:
         max_delay (int): [description]
+        n (int): [description]
 
     Returns:
-        asyncio.Task: [description]
+        List[float]: [description]
     """
-    return asyncio.create_task(wait_random(max_delay))
+    random_float = random.uniform(0, max_delay)
+    await asyncio.sleep(random_float)
+    return random_float
