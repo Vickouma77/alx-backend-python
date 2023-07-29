@@ -4,8 +4,8 @@ unit test for utils.access_nested_map
 """
 
 import unittest
-
 from utils import access_nested_map
+from parameterized import parameterized
 
 
 class TestAccessNestedMap(unittest.TestCase):
