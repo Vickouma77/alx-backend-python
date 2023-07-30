@@ -20,3 +20,6 @@
 ## Tasks
 
 * [ ] 0. Parameterize a unit test
+* [ ] 1. Mock HTTP calls 
+* [ ] 2. Parameterize and patch 
+
