@@ -6,7 +6,7 @@ Unittests for client.py
 import unittest
 from requests import HTTPError
 from unittest.mock import patch, PropertyMock, Mock
-from parameterized import parameterized
+from parameterized import parameterized, parameterized_class
 from client import GithubOrgClient
 from typing import (
     Dict,
@@ -69,6 +69,10 @@ class TestGithubOrgClient(unittest.TestCase):
             test_class = GithubOrgClient("test")
             self.assertEqual(test_class.has_license(repo, license_key),
                             expected_return)
+@parameterized_class([
+    {"org_payload": {"payload": True}, "repos_payload": {"payload": True},
+        "expected_repos": ["test"]}
+])
 class TestIntegrationGithubOrgClient(unittest.TestCase):
      """
         TestIntegrationGithubOrgClient class
@@ -87,5 +91,5 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
             """
             tearDownClass method
             """
-            cls.get_patcher.stop()
+            cls.get_patcher.stop() 
    
