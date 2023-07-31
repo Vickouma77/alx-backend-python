@@ -108,6 +108,7 @@ class TestMemoize(unittest.TestCase):
             test_class.a_property
             mock.assert_called_once()
 
+
 class TestGithubOrgClient(unittest.TestCase):
     """
     TestGithubOrgClient class
@@ -124,4 +125,5 @@ class TestGithubOrgClient(unittest.TestCase):
         """
         test_class = GithubOrgClient(test_org_name)
         test_class.org()
-        mock_get_json.assert_called_once_with(f'https://api.github.com/orgs/{test_org_name}')
+        mock_get_json.assert_called_once_with(
+            f'https://api.github.com/orgs/{test_org_name}')
