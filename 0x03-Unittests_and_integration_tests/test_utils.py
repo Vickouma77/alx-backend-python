@@ -7,6 +7,7 @@ import unittest
 from typing import Dict, Tuple, Union
 from unittest.mock import patch, Mock
 from utils import access_nested_map, get_json, memoize
+from client import GithubOrgClient
 from parameterized import parameterized
 
 
