@@ -33,8 +33,6 @@ class TestGithubOrgClient(unittest.TestCase):
         mock_get_json.assert_called_once_with(
             "https://api.github.com/orgs/{}".format(org_name))
 
-
-        
     def test_public_repos_url(self) -> None:
         """
         TestPublicReposUrl method
@@ -44,3 +42,16 @@ class TestGithubOrgClient(unittest.TestCase):
             mock_org.return_value = {"repos_url": "test"}
             test_class = GithubOrgClient("test")
             self.assertEqual(test_class._public_repos_url, "test")
+
+    @patch('client.get_json')
+    def test_public_repos(self, mock_get_json: Mock) -> None:
+        """
+        TestPublicRepos method
+        """
+        mock_get_json.return_value = [{"name": "Google"}, {"name": "abc"}]
+        with patch('client.GithubOrgClient._public_repos_url',
+                   new_callable=PropertyMock) as mock_public_repos_url:
+            mock_public_repos_url.return_value = "test"
+            test_class = GithubOrgClient("test")
+            self.assertEqual(test_class.public_repos(), ["Google", "abc"])
+            mock_get_json.assert_called_once_with("test")
