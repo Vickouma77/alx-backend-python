@@ -4,6 +4,7 @@ Unittests for client.py
 """
 
 import unittest
+from requests import HTTPError
 from unittest.mock import patch, PropertyMock, Mock
 from parameterized import parameterized
 from client import GithubOrgClient
@@ -68,3 +69,15 @@ class TestGithubOrgClient(unittest.TestCase):
             test_class = GithubOrgClient("test")
             self.assertEqual(test_class.has_license(repo, license_key),
                             expected_return)
+class TestIntegrationGithubOrgClient(unittest.TestCase):
+     """
+        TestIntegrationGithubOrgClient class
+     """
+     @classmethod
+     def setUpClass(cls) -> None:
+            """
+            setUpClass method
+            """
+            cls.get_patcher = patch('requests.get', side_effect=HTTPError)
+            cls.get_patcher.start()
+            cls.org = GithubOrgClient("google")
